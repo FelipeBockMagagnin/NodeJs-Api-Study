@@ -15,5 +15,17 @@ module.exports = {
       .findAll()
       .then(data => res.status(201).send(data))
       .catch(error => res.status(400).send(error));
+  },
+  validateLogin(req, res){
+    return Users
+    .findOne(
+      { 
+        where:
+        {
+          email: req.body.email, 
+        }        
+      })
+    .then(data => res.status(201).send(data))
+    .catch(error => res.status(400).send(error));
   }
 };
